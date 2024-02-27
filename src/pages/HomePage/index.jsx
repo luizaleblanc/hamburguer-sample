@@ -30,6 +30,10 @@ export const HomePage = () => {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("productList", JSON.stringify(productList));
+  }, [productList]);
+
   return (
     <>
       <Header />
