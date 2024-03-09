@@ -1,0 +1,24 @@
+@media (width > 700px) {
+    .ul{
+        display: grid;
+        row-gap: 52px;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(auto-fill, 300px);
+        justify-content: space-between;
+        width: 85.5vw;
+        margin-left: 7.25vw;
+        padding-bottom: 30px;
+        margin-top: 83.3px;
+    }   
+}
+
+@media (width < 700px) {
+    .ul{
+       width: 100%;
+       display: flex;
+       overflow-x: auto;
+       gap: 20px;
+       padding: 30px 20px 10px 0;
+       margin-top: 83.3px;
+    }   
+}

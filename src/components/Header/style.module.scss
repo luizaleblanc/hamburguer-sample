@@ -1,0 +1,51 @@
+.header{
+    background-color: var(--gray-0);
+    width: 100%;
+    display: flex;
+    
+    form{
+        display: none;}
+}
+
+.container{ 
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 90%;
+
+    div{
+        button{
+        background-color: var(--gray-0);
+        color: var(--gray-100);
+        position: relative;
+        height: 42px;
+        width: 35px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        cursor: pointer;
+
+        .cart{
+            width: 25px;
+            height: 25px;
+            color: #bdbdbd;
+            font-size: 30px;
+        }
+
+        span{
+        background-color: var(--color-primary); 
+        border-radius: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 24px;
+        }
+        }
+    }
+}
+

@@ -5,16 +5,13 @@ import { ProductList } from "../../components/ProductList";
 import { API } from "../../services/Api";
 
 export const HomePage = () => {
-  const [productList, setProductList] = useState([]);
-  const [cartList, setCartList] = useState([]);
-  const [isCartModal, setIsCartModal] = useState(false);
+  const getLocalStorageItems = JSON.parse(localStorage.getItem("productList")) || [];
 
-  // useEffect montagem - carrega os produtos da API e joga em productList (FEITO)
-  // useEffect atualização - salva os produtos no localStorage (carregar no estado)
-  // adição, exclusão, e exclusão geral do carrinho
-  // renderizações condições e o estado para exibir ou não o carrinho
-  // filtro de busca
-  // estilizar tudo com sass de forma responsiva
+  const [productList, setProductList] = useState([]);
+  const [cartList, setCartList] = useState(getLocalStorageItems);
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const removeProduct = (product) => setCartList(product);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -30,19 +27,30 @@ export const HomePage = () => {
     getProducts();
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("productList", JSON.stringify(productList));
-  }, [productList]);
+  useEffect(() => localStorage.setItem("productList", JSON.stringify(productList)), [productList]);
+
+  console.log("PRODUCTLIST", productList);
 
   return (
     <>
-      <Header />
+      <Header setSearchValue={setSearchValue} cartList={cartList} setIsOpen={setIsOpen} />
       <main>
-        <ProductList productList={productList} />
-
-        {isCartModal && <CartModal cartList={cartList} setIsOpen={setIsCartModal} />}
-
-        <button onClick={() => setIsCartModal(true)}>Abrir modal</button>
+        {productList && (
+          <ProductList
+            productList={productList}
+            cartList={cartList}
+            setCartList={setCartList}
+            searchValue={searchValue}
+          />
+        )}
+        {isOpen && (
+          <CartModal
+            cartList={cartList}
+            setCartList={setCartList}
+            setIsOpen={setIsOpen}
+            removeProduct={removeProduct}
+          />
+        )}
       </main>
     </>
   );

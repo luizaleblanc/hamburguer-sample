@@ -1,0 +1,41 @@
+@import url("../../../styles/globalStyles.scss");
+
+.li{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    div{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: auto;
+        gap: 9px;
+        height: 100%;
+        img{
+            width: 82px;
+            height: 100%;
+        }
+        h3{
+            padding-top: 20px;
+            color: var(--grey-600);
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 0;
+        }
+    }
+    .button{
+        background-color: #FFFFFF;
+        border: none;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+
+        .icon{
+            color: #BDBDBD;
+            pointer-events: none;
+        }
+    }
+}
